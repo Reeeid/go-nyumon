@@ -1,6 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
+
+type Shape interface {
+	Area() float64
+}
 
 func main() {
 	rectangle := Rectangle{
@@ -27,4 +34,11 @@ type Circle struct {
 
 func printArea(s Shape) {
 	fmt.Println("面積: ", s.Area(), "㎠")
+}
+
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Height
+}
+func (c Circle) Area() float64 {
+	return c.Radius * c.Radius * math.Pi
 }

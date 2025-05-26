@@ -14,6 +14,12 @@ func main() {
 }
 
 // 構造体 Book を定義 ---
+type Book struct {
+	Title      string
+	Author     string
+	Price      int
+	Categories []string
+}
 
 // フィールド
 // Title ... 文字列、本のタイトル
@@ -24,7 +30,19 @@ func main() {
 // --------------------
 
 // Bookの配列を引数とし、本の合計価格を戻り値とする関数 `Total` を実装する
-func Total() {}
+func Total(books []Book) int {
+	price := 0
+	for _, book := range books {
+		price += book.Price
+	}
+	return price
+}
 
 // 3. キーを「著者名 (Author)」、値を構造体 Book とするマップを戻り値とする関数 `ToMap` を実装する
-func ToMap() {}
+func ToMap(books []Book) map[string]Book {
+	authorBooksMap := make(map[string]Book)
+	for _, book := range books {
+		authorBooksMap[book.Author] = book
+	}
+	return authorBooksMap
+}

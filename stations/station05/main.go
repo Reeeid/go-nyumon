@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"os"
+)
+
 func main() {
 	sampleFile := "./sample.txt"
 	CheckFileExist(sampleFile)
@@ -8,4 +13,11 @@ func main() {
 	CheckFileExist(notExistFile)
 }
 
-func CheckFileExist(path string) {}
+func CheckFileExist(path string) {
+	_, err := os.Stat(path)
+	if err == nil {
+		fmt.Print("ファイルが見つかりました")
+	} else {
+		fmt.Print("ファイルが見つかりませんでした")
+	}
+}
